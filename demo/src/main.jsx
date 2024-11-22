@@ -1,35 +1,30 @@
 // import React from "react";
 // import ReactDOM from "react-dom";
 // import { ReactDOM, Component, useReducer, useState } from "../which-react";
-import { ReactDOM } from "../which-react";
+import { ReactDOM, Component } from "../which-react";
 
 import "./index.css";
 
-// function FunctionComponent(props) {
-//   const [count, setCount] = useReducer((x) => x + 1, 0);
-//   const [count2, setCount2] = useState(0);
+function FunctionComponent(props) {
+  // const [count, setCount] = useReducer((x) => x + 1, 0);
+  // const [count2, setCount2] = useState(0);
 
-//   return (
-//     <div className="border">
-//       <p>{props.name}</p>
-//       <button onClick={() => setCount()}>{count}</button>
-//       <button onClick={() => setCount2(count2 + 1)}>{count2}</button>
+  return (
+    <div className="border">
+      functionnal
+    </div>
+  );
+}
 
-//       {count % 2 ? <div>omg</div> : <span>o</span>}
-//     </div>
-//   );
-// }
-
-// class ClassComponent extends Component {
-//   render() {
-//     return (
-//       <div className="border">
-//         <h3>{this.props.name}</h3>
-//         我是文本
-//       </div>
-//     );
-//   }
-// }
+class ClassComponent extends Component {
+  render() {
+    return (
+      <div className="border">
+        我是文本
+      </div>
+    );
+  }
+}
 
 // function FragmentComponent() {
 //   return (
@@ -45,7 +40,9 @@ import "./index.css";
 const jsx = (
   <div className="border">
     <h1>react</h1>
-    {/* <a href="https://github.com/bubucuo/mini-react">mini react</a> */}
+    <a href="https://github.com/bubucuo/mini-react">mini react</a>
+    <FunctionComponent></FunctionComponent>
+    <ClassComponent></ClassComponent>
   </div>
 );
 

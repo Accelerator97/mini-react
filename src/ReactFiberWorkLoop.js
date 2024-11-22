@@ -71,7 +71,7 @@ function commitWorker(wip) {
     if (!wip) return
     // 1. 提交自己 
     // parentNode是父dom节点
-    const parentNode = wip.return.stateNode
+    const parentNode = getParentNode(wip.return)
     const { flags, stateNode } = wip
     if (flags && Placement && stateNode) {
         parentNode.appendChild(stateNode)
@@ -82,6 +82,16 @@ function commitWorker(wip) {
     commitWorker(wip.sibling);
 }
 
+
+function getParentNode(wip) {
+    let tem = wip // 函数式组件的stateNode为null 递归向上寻找dom
+    while (tem) {
+        if (tem.stateNode) {
+            return tem.stateNode
+        }
+        tem = tem.return
+    }
+}
 
 // 浏览器原生方法 空闲时间机会渲染
 requestIdleCallback(workLoop)

@@ -1,4 +1,4 @@
-import { FunctionComponent, HostComponent } from "./ReactWorkTags"
+import { ClassComponent, FunctionComponent, HostComponent } from "./ReactWorkTags"
 import { isStr, Placement, isFn } from "./utils"
 
 export function createFiber(vnode, returnFiber) {
@@ -16,8 +16,9 @@ export function createFiber(vnode, returnFiber) {
     const { type } = vnode
     if (isStr(type)) { // dom
         fiber.tag = HostComponent
-    } else if (isFn(type)) { // 函数组件以及类组件
-        fiber.tag = FunctionComponent
+    } else if (isFn(type)) {
+        // 函数组件以及类组件
+        fiber.tag = type.prototype.isReactComponent ? ClassComponent : FunctionComponent
     }
     return fiber
 }
