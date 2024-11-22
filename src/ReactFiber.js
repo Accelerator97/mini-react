@@ -1,5 +1,5 @@
 import { FunctionComponent, HostComponent } from "./ReactWorkTags"
-import { isStr, Placement } from "./utils"
+import { isStr, Placement, isFn } from "./utils"
 
 export function createFiber(vnode, returnFiber) {
     const fiber = {
@@ -13,10 +13,7 @@ export function createFiber(vnode, returnFiber) {
         flags: Placement,
         index: null,
     }
-
-
     const { type } = vnode
-
     if (isStr(type)) { // dom
         fiber.tag = HostComponent
     } else if (isFn(type)) { // 函数组件以及类组件
